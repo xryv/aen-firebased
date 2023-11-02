@@ -1,6 +1,9 @@
+// nextjs-with-firebase\pages\index.js
+
 import { useEffect } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import FirebaseAuth from '@/components/auth/FirebaseAuth';
 import styles from '../styles/Home.module.css';
 import { useUser } from '@/lib/firebase/useUser';
 import Card from 'react-bootstrap/Card';
@@ -8,6 +11,8 @@ import Button from 'react-bootstrap/Button';
 
 export default function Home() {
   const { user, logout } = useUser();
+
+  
 
   const ExperienceSymbol = ({ title, svgPath, href }) => (
     <Link href={href} passHref>
@@ -23,27 +28,30 @@ export default function Home() {
   const renderExperiences = () => (
     <div className={styles.symbolsWrapper}>
       <ExperienceSymbol 
-        title="Knowledge"
+        title=""
         svgPath="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
         href="/knowledge/knowledge"
       />
       <ExperienceSymbol 
-        title="Economy"
+        title=""
         svgPath="M12 2l6.627 11.5H5.373L12 2zm0 4.33L8.535 11h6.93L12 6.33zM5 14h14l-7 12-7-12z"
         href="/economy"
+        filter="url(#blur)"
       />
       <ExperienceSymbol 
-        title="Avatar"
+        title=""
         svgPath="M12 2L2 8.5 12 15 22 8.5 12 2z"
         href="/avatar"
       />
       <ExperienceSymbol 
-        title="Foundation"
+        title=""
         svgPath="M4 4h16v16H4V4z"
         href="/foundation"
       />
     </div>
   );
+
+  
 
   return (
     <div className={styles.container}>
@@ -53,10 +61,11 @@ export default function Home() {
       </Head>
       <main className={styles.mainContent}>
         <h1 className={styles.mainTitle}>AETHEREAL NEXUS</h1>
-        <h2 className={styles.subTitle}>EXPERIENCE</h2>
-        <p className={styles.smallText}>an unique ever seen piece of art</p>
+        <h2 className={styles.subTitle}>uni-verse</h2>
+        <p className={styles.smallText}>Artistic Project in development... For more information or contact</p>
         {renderExperiences()}
       </main>
+      <aside className={styles.loginContainer}>
       {user ? (
         <>
           <Card className={styles.profileCard}>
@@ -75,9 +84,10 @@ export default function Home() {
             </Card.Body>
           </Card>
         </>
-      ) : (
-        <p className={styles.loginPrompt}><a href="/auth">Log In!</a></p>
-      )}
+        ) : (
+            <FirebaseAuth />
+        )}
+     </aside>
     </div>
   );
 }

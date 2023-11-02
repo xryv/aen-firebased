@@ -1,3 +1,5 @@
+/* home.module.css */
+
 .container {
   min-height: 100vh;
   padding: 2rem;
@@ -5,9 +7,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url('../public/background12K.jpg'); /* Adjusted path to the image */
-  background-size: cover; /* Cover the entire container */
-  background-position: center; /* Center the image */
+  background-image: url('../public/background12K.jpg');
+  background-size: cover;
+  background-position: center;
   border-radius: 20px;
   box-shadow: 0px 0px 30px rgba(173, 216, 230, 0.3);
   z-index: 1;
@@ -52,20 +54,19 @@
   align-items: center;
   cursor: pointer;
   transition: transform 0.3s ease, filter 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 10px;
 }
 
 .symbolContainer:hover {
-  transform: scale(1.15);
+  transform: scale(1.15) translateY(-5px);
   filter: brightness(1.5);
 }
 
 .symbol {
   fill: #ffffff;
-  transition: fill 0.3s ease;
-}
-
-.symbolContainer:hover .symbol {
-  fill: #ffffff;
+  transition: fill 0.3s ease, transform 0.3s ease;
 }
 
 .symbolTitle {
@@ -90,32 +91,6 @@
 .loginPrompt {
   color: #ADD8E6;
   margin-top: 3rem;
-}
-
-
-/* home.module.css */
-/* ... existing styles ... */
-
-/* Add modern styling for the icons */
-.symbolContainer {
-  /* ... existing styles ... */
-  background: rgba(255, 255, 255, 0.1); /* Slight background to make icons pop */
-  padding: 1rem;
-  border-radius: 10px;
-}
-
-.symbol {
-  /* ... existing styles ... */
-  transition: fill 0.3s ease, transform 0.3s ease;
-}
-
-.symbolContainer:hover .symbol {
-  transform: translateY(-5px); /* Lift effect on hover */
-}
-
-/* Add a modern touch to the login prompt */
-.loginPrompt {
-  /* ... existing styles ... */
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
@@ -123,5 +98,105 @@
 }
 
 .loginPrompt:hover {
-  color: #00BFFF; /* Bright blue on hover for interactivity */
+  color: #00BFFF;
 }
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .mainTitle {
+    font-size: 3rem; /* Smaller font size for smaller screens */
+  }
+
+  .subTitle, .loginPrompt {
+    font-size: 1.5rem;
+  }
+
+  .smallText {
+    font-size: 0.9rem;
+  }
+
+  .symbolsWrapper {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  .mainTitle {
+    font-size: 2.5rem;
+  }
+
+  .subTitle, .loginPrompt {
+    font-size: 1.25rem;
+  }
+
+  .smallText {
+    font-size: 0.8rem;
+  }
+
+  .symbolsWrapper {
+    gap: 0.5rem;
+  }
+
+  .profileActions, .profileCard, .loginContainer {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .mainTitle, .subTitle, .loginPrompt {
+    font-size: 1rem;
+  }
+
+  .smallText {
+    font-size: 0.7rem;
+  }
+
+  .symbolsWrapper {
+    gap: 0.25rem;
+  }
+
+  .symbolContainer {
+    padding: 0.5rem;
+  }
+}
+
+/* Specific styles for loginContainer and its contents should go here */
+.loginContainer {
+  position: absolute;
+  right: 0;
+  width: 30%; /* Adjust width as necessary */
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent black background */
+  backdrop-filter: blur(2px); /* Optional blur effect */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 2; /* Ensure it's above the background but below other content */
+}
+
+/* Responsive design adjustments for .loginContainer */
+@media (max-width: 768px) {
+  .loginContainer {
+    width: 40%; /* Increase width on smaller screens if needed */
+  }
+}
+
+@media (max-width: 480px) {
+  .loginContainer {
+    width: 50%; /* Increase width on very small screens if needed */
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+}
+
+/* ... (rest of your CSS code) ... */

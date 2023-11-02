@@ -1,4 +1,4 @@
-// components/Layout.js
+// nextjs-with-firebase\components\layout.js
 
 import Head from 'next/head';
 import { useEffect } from 'react';

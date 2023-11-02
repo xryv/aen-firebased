@@ -14,11 +14,18 @@ body {
   margin: 0;
   font-family: 'Ethereal Thin', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: #000; /* Global dark theme */
+  color: #fff; /* Light text for contrast */
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #00BFFF; /* Bright blue on hover */
 }
 
 * {
@@ -34,21 +41,19 @@ a {
   z-index: -1; /* Behind other content */
 }
 
-
-
-
-/* Apply the Ethereal Thin font globally */
-body {
-  font-family: 'Ethereal Thin', sans-serif;
-  background: #000; /* Global dark theme */
-  color: #fff; /* Light text for contrast */
+/* Responsive base sizing using REM units */
+html {
+  font-size: 16px; /* Base font size */
 }
 
-/* Style links for a modern look */
-a {
-  transition: color 0.3s ease;
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Smaller base font size for tablet and mobile */
+  }
 }
 
-a:hover {
-  color: #00BFFF; /* Bright blue on hover */
+@media (max-width: 480px) {
+  html {
+    font-size: 12px; /* Even smaller base font size for very small devices */
+  }
 }
