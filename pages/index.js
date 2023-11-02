@@ -1,105 +1,83 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import WriteToCloudFirestore from '@/components/cloudFirestore/Write'
-import ReadDataFromCloudFirestore from '@/components/cloudFirestore/Read'
-import { useUser } from '@/lib/firebase/useUser'
-import Counter from '@/components/realtimeDatabase/Counter'
-import UploadFile from '@/components/storage/UploadFile'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
+import { useEffect } from 'react';
+import Link from 'next/link';
+import Head from 'next/head';
+import styles from '../styles/Home.module.css';
+import { useUser } from '@/lib/firebase/useUser';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 export default function Home() {
-  const { user, logout } = useUser()
+  const { user, logout } = useUser();
 
-  if (user) {
-    return (
-      <div className={styles.container}>
-        <Card>
-          <Card.Body>
-            <Card.Title>{user.name}</Card.Title>
-            <Card.Text>{user.email}</Card.Text>
-            <hr />
-            {user.profilePic ? <image src={user.profilePic} height={100} width={100}></image> : <p>No profile pic</p>}
-            <hr />
-            <WriteToCloudFirestore />
-            <ReadDataFromCloudFirestore />
-            <hr />
-            <Counter id={user.id} />
-            <hr />
-            <UploadFile />
-            <hr />
-            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-              <Button onClick={() => logout()} style={{ width: '100px' }}>Log Out</Button>
-              <a href="https://github.com/bjcarlson42/nextjs-with-firebase" target="_blank">
-                <Button variant="outline-secondary" style={{ width: '100px' }}>Code</Button>
-              </a>
-            </div>
-          </Card.Body>
-        </Card>
-      </div>
-    )
-  }
+  const ExperienceSymbol = ({ title, svgPath, href }) => (
+    <Link href={href} passHref>
+      <a className={styles.symbolContainer}>
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d={svgPath} className={styles.symbol}></path>
+        </svg>
+        <div className={styles.symbolTitle}>{title}</div>
+      </a>
+    </Link>
+  );
 
-  else return (
+  const renderExperiences = () => (
+    <div className={styles.symbolsWrapper}>
+      <ExperienceSymbol 
+        title="Knowledge"
+        svgPath="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+        href="/knowledge/knowledge"
+      />
+      <ExperienceSymbol 
+        title="Economy"
+        svgPath="M12 2l6.627 11.5H5.373L12 2zm0 4.33L8.535 11h6.93L12 6.33zM5 14h14l-7 12-7-12z"
+        href="/economy"
+      />
+      <ExperienceSymbol 
+        title="Avatar"
+        svgPath="M12 2L2 8.5 12 15 22 8.5 12 2z"
+        href="/avatar"
+      />
+      <ExperienceSymbol 
+        title="Foundation"
+        svgPath="M4 4h16v16H4V4z"
+        href="/foundation"
+      />
+    </div>
+  );
+
+  return (
     <div className={styles.container}>
-      <p><a href="/auth">Log In!</a></p>
-
       <Head>
-        <title>Create Next App</title>
+        <title>Aethereal Nexus</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+      <main className={styles.mainContent}>
+        <h1 className={styles.mainTitle}>AETHEREAL NEXUS</h1>
+        <h2 className={styles.subTitle}>EXPERIENCE</h2>
+        <p className={styles.smallText}>an unique ever seen piece of art</p>
+        {renderExperiences()}
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      {user ? (
+        <>
+          <Card className={styles.profileCard}>
+            <Card.Body>
+              <Card.Title>{user.name}</Card.Title>
+              <Card.Text>{user.email}</Card.Text>
+              <hr />
+              {user.profilePic ? <img src={user.profilePic} height={100} width={100} alt="Profile" /> : <p>No profile pic</p>}
+              <hr />
+              <div className={styles.profileActions}>
+                <Button onClick={() => logout()} style={{ width: '100px' }}>Log Out</Button>
+                <a href="https://aethereal.nexus/" target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline-secondary" style={{ width: '100px' }}>Back Home</Button>
+                </a>
+              </div>
+            </Card.Body>
+          </Card>
+        </>
+      ) : (
+        <p className={styles.loginPrompt}><a href="/auth">Log In!</a></p>
+      )}
     </div>
-  )
+  );
 }
