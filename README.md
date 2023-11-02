@@ -1,6 +1,6 @@
 # Aethereal Nexus - Next.js & Firebase Essence
 
-![Aethereal Nexus](/public/readme-img.png)
+![Aethereal Nexus](/public/background12K.jpg)
 
 Welcome to the Aethereal Nexus, where the art of web development meets the magic of the cloud. This repository is a tapestry woven with the finest threads of [Next.js](https://nextjs.org/) and the boundless potential of [Firebase](https://firebase.google.com/). It's not just a project; it's an odyssey through a digital dreamscape.
 
