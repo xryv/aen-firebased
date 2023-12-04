@@ -1,0 +1,6 @@
+provide the complete and improved css for the skills, the symbols/images are supposed to be used as icons, it should be resized to a nice sized button, size of a finger tip. 
+it should be organized as a inventory of skills in the page. 
+also it can be hidden by clicking in the main button.
+the page behavior is the following: i open the knowledge page and i got a nice interface, and part of that interface with some 3 buttons, one button opens the skills dashboard. after the dashboard functions as a multi video documentation and quiz area that serves to level up the skill based level of the account registred. one is to represent the skills and the attached level. ( a later functionality )
+
+when users click on that skill, it goes to a specific short video documentation zone. 

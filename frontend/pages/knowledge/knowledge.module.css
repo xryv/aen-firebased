@@ -1,0 +1,132 @@
+/* Knowledge.module.css */
+
+.container {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/aen-background.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0px 0px 30px rgba(173, 216, 230, 0.3);
+  z-index: 1;
+}
+
+.nav {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  margin-right: 1rem;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.card img {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.card:hover {
+  transform: scale(1.05) translateY(-5px);
+  filter: brightness(1.5);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.cardTitle {
+  color: #ffffff;
+  text-shadow: 0 0 10px #ADD8E6;
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.mainContent {
+  width: 80%;
+  padding-left: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.mainTitle {
+  font-size: 3rem;
+  color: #ffffff;
+  text-shadow: 0 0 15px #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.loginContainer {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.profileCard {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  box-shadow: none;
+}
+
+.footer {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .nav {
+    width: 25%;
+  }
+  .grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    width: 30%;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    width: 35%;
+  }
+}
